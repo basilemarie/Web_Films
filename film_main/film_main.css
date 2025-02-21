@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column; /* Met tout en colonne (vertical) */
+    align-items: center; /* Centre horizontalement */
+    justify-content: flex-start; /* Aligne en haut */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 100px; /* Hauteur du header */
+    display: flex;
+    align-items: center; /* Centre verticalement les éléments */
+    padding-left: 20px;
+    background: linear-gradient(to right, rgb(30, 184, 215), 10%, white);
+}
+
+.logo {
+    height: 80px; /* L’image prend toute la hauteur du header */
+    width: auto; /* Garde les proportions */
+}
+
+.page_choice {
+    display: flex;  /* Active Flexbox */
+    justify-content: center;  /* Centre les blocs horizontalement */
+    gap: 20px;  /* Ajoute un espacement entre les blocs */
+    margin: 20px auto;  /* Centre le conteneur */
+    max-width: 80%; /* Ajuste la largeur */
+}
+
+.page {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+    width: 200px;  /* Fixe une largeur aux blocs */
+    border-radius: 10px;
+}

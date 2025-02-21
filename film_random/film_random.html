@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage de Films</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        img { max-width: 300px; margin-top: 10px; }
+    </style>
+    <link rel="stylesheet" href="film_random.css">
+</head>
+<body>
+    <h1>Film aléatoire</h1>
+    <button onclick="getMovie()">Obtenir un film</button>
+    <h2 id="title"></h2>
+    <img id="poster" src="" alt="Affiche du film">
+    <p id="description"></p>
+
+    <script>
+        const API_KEY = '235f18c6dedac9eb6cd3020b665313ec'; // Remplace par ta clé TMDB
+        const BASE_URL = 'https://api.themoviedb.org/3';
+
+        async function getMovie() {
+            const randomId = Math.floor(Math.random() * 500) + 1; // ID aléatoire
+            const response = await fetch(`${BASE_URL}/movie/${randomId}?api_key=${API_KEY}&language=fr`);
+            const data = await response.json();
+
+            if (data.title) {
+                document.getElementById('title').innerText = data.title;
+                document.getElementById('poster').src = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+                document.getElementById('description').innerText = data.overview;
+            } else {
+                document.getElementById('title').innerText = "Aucun film trouvé";
+                document.getElementById('poster').src = "";
+                document.getElementById('description').innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
