@@ -46,3 +46,47 @@ header {
 .note {
     color: #5f6368; /* Gris doux */ 
 }
+
+
+
+#actors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 98%;
+    gap: 7px;
+}
+
+.actor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 250px;
+    gap: 5px;
+    text-align: center;
+
+}
+
+.photo_actor {
+    height: auto;
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.photo_actor:hover {
+    transform: scale(1.1);
+    /* Agrandit légèrement l'image */
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4);
+    /* Accentue l'ombre */
+}
+
+.name_actor {
+    font-weight: bold;
+    margin-top: 8px;
+}
