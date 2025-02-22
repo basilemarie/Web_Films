@@ -4,14 +4,10 @@ body {
     align-items: center; /* Centre horizontalement */
     justify-content: flex-start; /* Aligne en haut */
     margin: 0; /* Supprime les marges par défaut */
-    padding-top: 110px;
-    padding-bottom: 20px;
+    padding: 0;
 }
 
 header {
-    position:fixed;
-    top:0;
-    left:0;
     width: 100%;
     height: 100px; /* Hauteur du header */
     display: flex;
@@ -25,31 +21,20 @@ header {
     width: auto; /* Garde les proportions */
 }
 
-#wrapper {
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 98%;
-    gap:7px;
-}
-
-.film {
+#details {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:200px;
-    height:300px;
-    gap:7px;
+    width:80%;
+    height:auto;
+    gap:10px;
     text-align: center;
-    
 }
 
-.poster {
+.movie_image {
     max-height: auto;
-    max-width:150px;
+    max-width:250px;
     border-radius: 10px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
