@@ -47,10 +47,10 @@ async function fetch_actors(film) {
 
         for (let actor of actors) {
             actors_name.push(actor.name);
-            actors_image.push(actor.profile_path 
+            actors_image.push(actor.profile_path
                 ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
                 : "https://picsum.photos/300/450" // Image par défaut si l'acteur n'a pas d'image
-        );
+            );
         }
 
         localStorage.setItem('actorNames', JSON.stringify(actors_name));
@@ -75,7 +75,7 @@ async function renderFilms(films) {
         imageEl.className = 'poster'
 
         imageEl.addEventListener("click", async function () {
-            
+
             await fetch_actors(film);
 
             localStorage.setItem('selectedFilm', JSON.stringify(film));
@@ -106,3 +106,89 @@ async function initialRender() {
 }
 
 initialRender();
+
+
+function recupText() {
+    let texte = document.getElementById("type_bar").value;
+    console.log(texte);
+}
+
+document.getElementById("type_bar").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        renderSearch();
+    }
+})
+
+
+
+async function renderSearch() {
+    let search = document.getElementById("type_bar").value;
+
+    //on va venir delet tout les autres films pour n'afficher que le film qui nous intéresse 
+
+    const wrapper = document.getElementById("wrapper");
+    while (wrapper.firstChild) {
+        wrapper.removeChild(wrapper.firstChild);
+    }
+
+    try {
+        const reponse = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(search)}&language=fr`);
+
+        'https://api.themoviedb.org/3/search/movie?api_key=235f18c6dedac9eb6cd3020b665313ec&query=Incep&language=fr'
+
+        if (!reponse.ok) { //ici on regarde ci le lien http est bon et nous emmène bien vers une page 
+            console.warn(`Film avec le nom ${search} introuvable (404)`);
+        }
+
+        const data = await reponse.json();
+
+        // Vérifie si on a bien des résultats
+        if (data.results.length === 0) {
+            console.warn(`Aucun film trouvé pour "${search}"`);
+            return;
+        }
+
+        // Prend le premier film de la liste
+        const film = data.results[0];
+
+
+        const base_El = document.createElement("div");
+        document.getElementById("wrapper").appendChild(base_El);
+        base_El.className = "film";
+
+
+        const imageEl = document.createElement("img");
+        imageEl.src = `https://image.tmdb.org/t/p/w500${film.poster_path}`;
+        imageEl.className = 'poster'
+
+        imageEl.addEventListener("click", async function () {
+
+            await fetch_actors(film);
+
+            localStorage.setItem('selectedFilm', JSON.stringify(film));
+
+            window.location.href = '../film_details/film_details.html';
+        })
+
+        base_El.appendChild(imageEl);
+
+
+        const nameEl = document.createElement("div");
+        nameEl.textContent = film.title;
+        base_El.appendChild(nameEl);
+        nameEl.className = 'title'
+
+        const noteEl = document.createElement("div");
+        noteEl.textContent = `⭐ Note : ${film.vote_average.toFixed(1)} / 10`;
+        base_El.appendChild(noteEl);
+        noteEl.className = 'note'
+
+    } catch (error) {
+        console.error(`Erreur lors du fetch du film ${search} :`, error);
+    }
+
+}
+
+
+
+

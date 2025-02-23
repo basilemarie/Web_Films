@@ -33,6 +33,14 @@ header {
     /* Garde les proportions */
 }
 
+.top_page {
+    display: flex;
+    justify-content: space-between; /* Aligne les éléments de manière espacée */
+    align-items: center; /* Centre verticalement le contenu */
+    padding: 20px;
+}
+
+
 #wrapper {
     display: flex;
     flex-direction: row;
