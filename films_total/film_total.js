@@ -149,39 +149,43 @@ async function renderSearch() {
         }
 
         // Prend le premier film de la liste
-        const film = data.results[0];
+
+        for (let i = 0; i < data.results.length; i++) {
+            
+            const film = data.results[i];
+
+            const base_El = document.createElement("div");
+            document.getElementById("wrapper").appendChild(base_El);
+            base_El.className = "film";
 
 
-        const base_El = document.createElement("div");
-        document.getElementById("wrapper").appendChild(base_El);
-        base_El.className = "film";
+            const imageEl = document.createElement("img");
+            imageEl.src = `https://image.tmdb.org/t/p/w500${film.poster_path}`;
+            imageEl.className = 'poster'
+
+            imageEl.addEventListener("click", async function () {
+
+                await fetch_actors(film);
+
+                localStorage.setItem('selectedFilm', JSON.stringify(film));
+
+                window.location.href = '../film_details/film_details.html';
+            })
+
+            base_El.appendChild(imageEl);
 
 
-        const imageEl = document.createElement("img");
-        imageEl.src = `https://image.tmdb.org/t/p/w500${film.poster_path}`;
-        imageEl.className = 'poster'
+            const nameEl = document.createElement("div");
+            nameEl.textContent = film.title;
+            base_El.appendChild(nameEl);
+            nameEl.className = 'title'
 
-        imageEl.addEventListener("click", async function () {
+            const noteEl = document.createElement("div");
+            noteEl.textContent = `⭐ Note : ${film.vote_average.toFixed(1)} / 10`;
+            base_El.appendChild(noteEl);
+            noteEl.className = 'note'
+        }
 
-            await fetch_actors(film);
-
-            localStorage.setItem('selectedFilm', JSON.stringify(film));
-
-            window.location.href = '../film_details/film_details.html';
-        })
-
-        base_El.appendChild(imageEl);
-
-
-        const nameEl = document.createElement("div");
-        nameEl.textContent = film.title;
-        base_El.appendChild(nameEl);
-        nameEl.className = 'title'
-
-        const noteEl = document.createElement("div");
-        noteEl.textContent = `⭐ Note : ${film.vote_average.toFixed(1)} / 10`;
-        base_El.appendChild(noteEl);
-        noteEl.className = 'note'
 
     } catch (error) {
         console.error(`Erreur lors du fetch du film ${search} :`, error);
