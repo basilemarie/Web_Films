@@ -32,27 +32,26 @@ header {
     text-align: center;
 }
 
-.actor_image {
+img#actor_frame{
     max-height: auto;
     max-width:250px;
     border-radius: 10px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.title {
+h1#title{
     font-weight: bold;
 }
 
-.dates_title {
+label#dates_title{
     font-style: italic;
     font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 15px;
 }
 
 .note {
     color: #5f6368; /* Gris doux */ 
 }
-
-
 
 #actors {
     display: flex;

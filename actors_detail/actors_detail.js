@@ -9,33 +9,27 @@ const name = actor?.name || "Nom inconnu";
 const birthday = actor?.birthday || "Date de naissance inconne"
 const deathday = actor?.deathday || "";
 const image = actor.profile_path
-? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-: "https://picsum.photos/300/450";
+? `https://image.tmdb.org/t/p/w500${actor.profile_path}/credits?api_key=${API_KEY}`
+: "../assets/unknown.png";
 
 async function render_details(){
 
     const detailEl = document.getElementById("details");
 
-    const nameEl = document.createElement("h1");
+    const nameEl = document.getElementById("title");
     nameEl.textContent = name;
-    detailEl.appendChild(nameEl);
-    nameEl.className = 'title'
 
-    const datesEl = document.createElement("label");
+    const datesEl = document.getElementById("dates_title");
     datesEl.textContent = birthday + (deathday === "" ? "" : ` - ${deathday}`);
-    detailEl.appendChild(datesEl);
-    datesEl.className = 'dates_title';
-
-    const imageEl = document.createElement("img");
+    
+    const imageEl = document.getElementById("actor_frame");
     imageEl.src = image;
-    imageEl.className = 'actor_image';
-    detailEl.appendChild(imageEl);
 }
 
 render_details();
 
 async function fetchActor(person_id){
-    fetch(BASE_URL + `/person/${person_id}?language=fr-fr`)
+    fetch(BASE_URL + `/person/${person_id}/credits?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(res => console.log(res))
     .catch(err => console.log(err));

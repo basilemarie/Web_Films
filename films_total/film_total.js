@@ -49,7 +49,7 @@ async function fetch_actors(film) {
             actors_name.push(actor.name);
             actors_image.push(actor.profile_path
                 ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-                : "https://picsum.photos/300/450" // Image par défaut si l'acteur n'a pas d'image
+                : "../assets/unknown.png" // Image par défaut si l'acteur n'a pas d'image
             );
         }
 
