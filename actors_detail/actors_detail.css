@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    flex-direction: column; /* Met tout en colonne (vertical) */
+    align-items: center; /* Centre horizontalement */
+    justify-content: flex-start; /* Aligne en haut */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 100px; /* Hauteur du header */
+    display: flex;
+    align-items: center; /* Centre verticalement les éléments */
+    padding-left: 20px;
+    background: linear-gradient(to right, rgb(30, 184, 215), 10%, white);
+}
+
+.logo {
+    height: 80px; /* L’image prend toute la hauteur du header */
+    width: auto; /* Garde les proportions */
+}
+
+#details {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:80%;
+    height:auto;
+    gap:10px;
+    text-align: center;
+}
+
+.actor_image {
+    max-height: auto;
+    max-width:250px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    font-weight: bold;
+}
+
+.dates_title {
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.note {
+    color: #5f6368; /* Gris doux */ 
+}
+
+
+
+#actors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 98%;
+    gap: 7px;
+}
+
+.actor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 250px;
+    gap: 5px;
+    text-align: center;
+
+}
+
+.photo_actor {
+    height: auto;
+    width: 100px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.photo_actor:hover {
+    transform: scale(1.1);
+    /* Agrandit légèrement l'image */
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4);
+    /* Accentue l'ombre */
+}
+
+.name_actor {
+    font-weight: bold;
+    margin-top: 8px;
+}
