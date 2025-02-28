@@ -78,6 +78,7 @@ async function renderFilms(films) {
 
             await fetch_actors(film);
 
+
             localStorage.setItem('selectedFilm', JSON.stringify(film));
 
             window.location.href = '../film_details/film_details.html';
@@ -95,6 +96,12 @@ async function renderFilms(films) {
         noteEl.textContent = `⭐ Note : ${film.vote_average.toFixed(1)} / 10`;
         base_El.appendChild(noteEl);
         noteEl.className = 'note'
+
+        /*
+        const genresEl = document.createAttribute("div");
+        genresEl = film.genres.map(genre => genre.name)[0];
+        genresEl.className="genre"
+        */
 
     }
 
@@ -148,9 +155,7 @@ async function renderSearch() {
             return;
         }
 
-        // Prend le premier film de la liste
-
-        for (let i = 0; i < data.results.length; i++) {
+        for (let i = 0; i <=data.results.length; i++) {
             
             const film = data.results[i];
 
@@ -184,6 +189,8 @@ async function renderSearch() {
             noteEl.textContent = `⭐ Note : ${film.vote_average.toFixed(1)} / 10`;
             base_El.appendChild(noteEl);
             noteEl.className = 'note'
+
+            
         }
 
 
@@ -193,6 +200,42 @@ async function renderSearch() {
 
 }
 
+//Section du choix du type de film
+
+function recupSelect() {
+
+    let checkboxes = document.querySelectorAll('.category:checked');
+    let genres = [];
+
+    checkboxes.forEach(checkbox => {
+        genres.push(checkbox.value);
+    });
+
+    console.log("voilà les genres:",genres);
+    return genres;
+
+}
+
+function recupDisplayedFilms() {
+
+    const displayed_Film = [];
+    const film_div = document.querySelectorAll("#wrapper .film");
+
+    film_div.forEach(filmDiv => {
+        const title = filmDiv.querySelector(".title").textContent;
+        const image = filmDiv.querySelector(".poster").src;
+        const note = filmDiv.querySelector(".note").textContent;
+        const genre = filmDiv.querySelector(".genre").textContent;
+        
+        displayed_Film.push({title, image, note, genre});
+    })
+
+    return (displayed_Film);
+}
+
+async function display_genres(){
+    const display_film = recupDisplayedFilms();
+}
 
 
 
