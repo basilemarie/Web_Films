@@ -90,3 +90,7 @@ header {
     font-weight: bold;
     margin-top: 8px;
 }
+
+#role_name {
+    font-style: italic;
+}

@@ -6,15 +6,13 @@ const actorId = localStorage.getItem('actorId');
 const actor = fetchActor(actorId);
 
 const name = actor?.name || "Nom inconnu";
-const birthday = actor?.birthday || "Date de naissance inconne"
+const birthday = actor?.birthday || "Date de naissance inconnue"
 const deathday = actor?.deathday || "";
 const image = actor.profile_path
 ? `https://image.tmdb.org/t/p/w500${actor.profile_path}/credits?api_key=${API_KEY}`
 : "../assets/unknown.png";
 
 async function render_details(){
-
-    const detailEl = document.getElementById("details");
 
     const nameEl = document.getElementById("title");
     nameEl.textContent = name;

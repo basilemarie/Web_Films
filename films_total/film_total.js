@@ -1,4 +1,5 @@
 const MAX_FETCHED_FILMS = 2;
+const MAX_ACTORS = 5;
 
 const API_KEY = '235f18c6dedac9eb6cd3020b665313ec';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -30,37 +31,6 @@ async function fetch_films() {
     return films;
 }
 
-async function fetch_actors(film) {
-    const url_actors = `https://api.themoviedb.org/3/movie/${film.id}/credits?api_key=${API_KEY}`;
-    actors_name = [];
-    actors_image = [];
-
-
-    try {
-        const response = await fetch(url_actors);
-        if (!response.ok) {
-            throw new Error("Erreur lors de la récupération des acteurs");
-        }
-
-        const actors_resp = await response.json();
-        const actors = actors_resp.cast;
-
-        for (let actor of actors) {
-            actors_name.push(actor.name);
-            actors_image.push(actor.profile_path
-                ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-                : "../assets/unknown.png" // Image par défaut si l'acteur n'a pas d'image
-            );
-        }
-
-        localStorage.setItem('actorNames', JSON.stringify(actors_name));
-        localStorage.setItem('actorImages', JSON.stringify(actors_image));
-
-    } catch (error) {
-        console.error("Erreur lors du fetch des acteurs :", error);
-    }
-}
-
 
 async function renderFilms(films) {
 
@@ -75,11 +45,7 @@ async function renderFilms(films) {
         imageEl.className = 'poster'
 
         imageEl.addEventListener("click", async function () {
-
-            await fetch_actors(film);
-
             localStorage.setItem('selectedFilm', JSON.stringify(film));
-
             window.location.href = '../film_details/film_details.html';
         })
 
@@ -164,11 +130,7 @@ async function renderSearch() {
             imageEl.className = 'poster'
 
             imageEl.addEventListener("click", async function () {
-
-                await fetch_actors(film);
-
                 localStorage.setItem('selectedFilm', JSON.stringify(film));
-
                 window.location.href = '../film_details/film_details.html';
             })
 
