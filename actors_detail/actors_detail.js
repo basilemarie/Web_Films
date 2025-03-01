@@ -16,7 +16,6 @@ async function render_details(){
     fetch(BASE_URL + `/person/${actorId}?language=fr-fr`, options)
     .then(res => res.json())
     .then(actor => {
-        console.log(actor);
         const birthday = actor?.birthday || "Date de naissance inconnue"
         const deathday = actor?.deathday || "";
         const imageURL = actor.profile_path
@@ -38,11 +37,9 @@ async function render_details(){
 render_details();
 
 async function render_actor_films(person_id){
-  console.log("ici c'estbon");
   fetch(BASE_URL + `/person/${person_id}/movie_credits?language=fr-fr`, options) 
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       const roles = res.cast.sort((a, b) => b.popularity - a.popularit);
       const roleDiv = document.getElementById('films');
       for(let role of roles){
