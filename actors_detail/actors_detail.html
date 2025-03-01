@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de détail des films</title>
-    <script src="film_details.js" defer></script>
-    <link rel="stylesheet" href="film_detail.css">
+    <script src="actors_detail.js" defer></script>
+    <link rel="stylesheet" href="actors_detail.css">
 
 </head>
 
@@ -20,8 +20,12 @@
     </header>
 
     <div id="details"></div>
-
-    <br><h2> Distribution </h2>
-    <div id="actors"></div>
-    
+        <h1 id="title"></h1>
+        <div id="dates_title"></div>
+        <br>
+        <img id="actor_frame" src="../assets/unknown.png">
+    <details id="cast_detail">
+        <summary> A joué dans : </summary>
+        <div id="films"></div>
+    </details>
 </body>

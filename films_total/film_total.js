@@ -1,4 +1,5 @@
-const MAX_FETCHED_FILMS = 10;
+const MAX_FETCHED_FILMS = 2;
+const MAX_ACTORS = 5;
 
 const API_KEY = '235f18c6dedac9eb6cd3020b665313ec';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -63,6 +64,7 @@ async function fetch_actors(film_id) {
 
 async function renderFilm(image_path, title, note, id) {
 
+
     const base_El = document.createElement("div");
     document.getElementById("wrapper").appendChild(base_El);
     base_El.className = "film";
@@ -85,6 +87,7 @@ async function renderFilm(image_path, title, note, id) {
     })
 
     base_El.appendChild(imageEl);
+
 
 
     const nameEl = document.createElement("div");
@@ -195,8 +198,8 @@ async function renderSearch() {
 
         for (let i = 0; i <= data.results.length; i++) {
 
-            const film = data.results[i];
 
+            const film = data.results[i];
             renderFilm(film.poster_path, film.title, `⭐ Note : ${film.vote_average.toFixed(1)} / 10`, film.id);
 
         }
