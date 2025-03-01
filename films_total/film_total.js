@@ -1,4 +1,4 @@
-const MAX_FETCHED_FILMS = 2;
+const MAX_FETCHED_FILMS = 20;
 const MAX_ACTORS = 5;
 
 const API_KEY = '235f18c6dedac9eb6cd3020b665313ec';
@@ -130,13 +130,14 @@ let initialFilms = [];
 
 
 async function initialRender() {
+    wrapper.innerHTML = '';
+    initialFilms=[];
+    localStorage.removeItem('films');
     const films = await fetch_films();
     await renderFilms(films);
     await new Promise(resolve => setTimeout(resolve, 100));
 
-    if (initialFilms.length === 0) {
-        initialFilms = recupDisplayedFilms();
-    }
+    initialFilms = recupDisplayedFilms();
     localStorage.setItem('films', JSON.stringify(films));
 }
 
@@ -144,10 +145,10 @@ async function loadFilms() {
     const load_film = JSON.parse(localStorage.getItem('films'));
     await renderFilms(load_film);
     await new Promise(resolve => setTimeout(resolve, 100));
+}
 
-    if (initialFilms.length === 0) {
-        initialFilms = recupDisplayedFilms();
-    }
+async function refresh() {
+    initialRender();
 }
 
 if (localStorage.getItem('films')) {
@@ -157,6 +158,7 @@ if (localStorage.getItem('films')) {
     initialRender();
     console.log("initialrender")
 }
+
 
 
 function recupText() {

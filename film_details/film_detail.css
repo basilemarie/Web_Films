@@ -1,24 +1,48 @@
-body {
-    display: flex;
-    flex-direction: column; /* Met tout en colonne (vertical) */
-    align-items: center; /* Centre horizontalement */
-    justify-content: flex-start; /* Aligne en haut */
-    margin: 0; /* Supprime les marges par défaut */
+* {
+    margin: 0;;
     padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-header {
-    width: 100%;
-    height: 100px; /* Hauteur du header */
+body {
+    background: url('../assets/background_main.png');
+    background-size: cover;
     display: flex;
-    align-items: center; /* Centre verticalement les éléments */
-    padding-left: 20px;
-    background: linear-gradient(to right, rgb(30, 184, 215), 10%, white);
+    flex-direction: column;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 50px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(15px);
+    z-index: -1;
+}
+
+header {    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, rgb(200,227,239), white);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 .logo {
-    height: 80px; /* L’image prend toute la hauteur du header */
-    width: auto; /* Garde les proportions */
+    height: 60px;
 }
 
 #details {
