@@ -32,24 +32,28 @@ header {
     text-align: center;
 }
 
-.movie_image {
+img#actor_frame{
     max-height: auto;
     max-width:250px;
     border-radius: 10px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.title {
+h1#title{
     font-weight: bold;
+}
+
+label#dates_title{
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 15px;
 }
 
 .note {
     color: #5f6368; /* Gris doux */ 
 }
 
-
-
-#actors {
+#films{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -59,7 +63,7 @@ header {
     gap: 7px;
 }
 
-.actor {
+.film {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,7 +75,7 @@ header {
 
 }
 
-.photo_actor {
+.film_img {
     height: auto;
     width: 100px;
     border-radius: 10px;
@@ -79,18 +83,31 @@ header {
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
-.photo_actor:hover {
+.film_img:hover {
     transform: scale(1.1);
     /* Agrandit légèrement l'image */
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4);
     /* Accentue l'ombre */
 }
 
-.name_actor {
+.film_title {
     font-weight: bold;
     margin-top: 8px;
 }
 
 #role_name {
     font-style: italic;
+}
+
+#cast_detail{
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0.5em 0.5em ;
+    margin-top: 30px;
+    width:70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+#cast_detail summary{
+    font-size: 27px;
 }
