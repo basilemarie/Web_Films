@@ -23,3 +23,23 @@ En cliquant sur l'image d'un film, il est possible d'en voir la fiche de descrip
 
 Nous nous sommes dit qu'il serait intéressant pour quelqu'un qui ne sait pas quel film regarder de pouvoir trouver un film au hasard. C'est pour cela que nous avons créé une roulette de hasard qui nous donne la fiche d'un film avec tous les détails intéressants.
 
+# Pour le lancement
+
+Il faut tout d'abord exécuter la commande (même si cela est probablement déjà fait chez vous) :
+
+npm install -g http-server
+
+Il faut ensuite aller dans le dossier concerné puis exécuter la commande :
+
+http-server
+
+Ce qui donne 
+
+Starting up http-server, serving ./
+Available on:
+   http://127.x.x.x:8080
+   http://192.x.x.x:8080
+
+Cela vous donnera un lien à suivre qui constituera votre serveur en local.
+
+Il faut ensuite aller dans film_main/film_main.html
