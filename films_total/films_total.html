@@ -31,7 +31,7 @@
     <div class="interface">
         <div>
             <ul class="choice">
-                <li><input type="checkbox" class= "category" value=01> Action</li>
+                <li><input type="checkbox" class= "category" value="Action"> Action</li>
                 <li><input type="checkbox" class= "category" value="Aventure">Aventure</li>
                 <li><input type="checkbox" class= "category" value="Animation">Animation</li>
                 <li><input type="checkbox" class= "category" value="Comédie">Comédie</li>
@@ -45,13 +45,14 @@
                 <li><input type="checkbox" class= "category" value="Musique"> Musique</li>
                 <li><input type="checkbox" class= "category" value="Mystère"> Mystère</li>
                 <li><input type="checkbox" class= "category" value="Romance"> Romance</li>
-                <li><input type="checkbox" class= "category" value="Science-fiction">Science-fiction</li>
+                <li><input type="checkbox" class= "category" value="Science-Fiction">Science-fiction</li>
                 <li><input type="checkbox" class= "category" value="Téléfilm">Téléfilm</li>
                 <li><input type="checkbox" class= "category" value="Thriller">Thriller</li>
                 <li><input type="checkbox" class= "category" value="Guerre">Guerre</li>
                 <li><input type="checkbox" class= "category" value="Western">Western</li>
 
-            <button id="selection_button" onclick="recupSelect()">Valider</button>
+            <button id="selection_button" onclick="display_genres()">Valider</button>
+            <button id="reset_button" onclick="render_initialFilms()">Reset</button>
 
         </div>
         <div id="wrapper">
